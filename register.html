@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    
+    <script>
+        function validateForm() {
+            // Retrieve form elements
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var company = document.getElementById("company").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var cpassword = document.getElementById("cpassword").value;
+
+            // Check if password and confirm password match
+            if (password !== cpassword) {
+                alert("Password and Confirm Password do not match");
+                return false;
+            }
+
+            // Check if email contains "@" symbol
+            if (email.indexOf("@") === -1) {
+                alert("Email must contain the '@' symbol");
+                return false;
+            }
+
+            // Check if any field is empty
+            if (fname === "" || lname === "" || company === "" || email === "" || password === "" || cpassword === "") {
+                alert("All fields must be filled");
+                return false;
+            }
+
+            // Validation passed
+            return true;
+        }
+    </script>
+        
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, rgba(63, 94, 251, 0.9), rgba(252, 70, 107, 0.9)), url(your-background-image.jpg) no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .register-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .register-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="email"],
+        .register-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .register-container input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .register-container input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .login-link {
+            font-size: 14px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* New styles for the heading */
+        .app-heading {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h2 class="app-heading">Register</h2>
+    <div class="register-container">
+      <!-- Registration form -->
+<form method="post" action="register_process.php" onsubmit="return validateForm()">
+    <!-- Username field -->
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <!-- Password field -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <!-- Login type (select) field -->
+    <label for="login_type">Register as:</label>
+    <select id="login_type" name="login_type" required>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+    </select>
+
+    <!-- First Name field -->
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" required>
+
+    <!-- Last Name field -->
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" required>
+
+    <!-- Company field -->
+    <label for="company">Company Name:</label>
+    <input type="text" id="company" name="company" required>
+
+    <!-- Email field -->
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+
+    <!-- Submit button -->
+    <input type="submit" name="register" value="Register"> <!-- Use name="register" for the submit button -->
+    </form>
+
+        <p>Already have an account? <a class="login-link" href="login.html">Login here</a></p>
+    </div>
+</body>
+</html>
